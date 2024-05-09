@@ -16,8 +16,9 @@ app.use(express.json());
 app.use(cors(corsOptions))
 app.use("/api", router);
 
-connectdb();
-
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+connectdb().then(()=>{
+  app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+  });
 });
+
